@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { Input } from "./shared/Input/Input";
-import Eye from "./assets/icons/eye.svg";
+import { Button } from "./shared/Button/Button";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text>TwilingLocation</Text>
+        <Text style={styles.logoTitle}>Twiling Location</Text>
         <Image
           source={require("./assets/cargps.png")}
           style={styles.logo}
@@ -15,12 +15,11 @@ export default function App() {
         />
         <View style={styles.form}>
           <Input placeholder="E-mail" />
-          <Input placeholder="Пароль" />
+          <Input placeholder="Пароль" isPassword />
 
-          <Button title="Войти" />
-          <Eye />
+          <Button title="ВОЙТИ" />
         </View>
-        <Text>Восстановить пароль1</Text>
+        <Text>Восстановить пароль</Text>
       </View>
     </View>
   );
@@ -36,6 +35,9 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 200,
+  },
+  logoTitle: {
+    fontSize: 24,
   },
   content: {
     alignItems: "center",

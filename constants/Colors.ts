@@ -16,6 +16,8 @@ export const Colors = {
     tabIconSelected: tintColorLight,
     inputBackgroundColor: "#91f575",
     placeholderTextColor: "#2d5024",
+    primary: "#91f575",
+    primaryHover: "#81d869",
   },
   dark: {
     text: "#ECEDEE",
@@ -26,5 +28,7 @@ export const Colors = {
     tabIconSelected: tintColorDark,
     inputBackgroundColor: "#91f575",
     placeholderTextColor: "#2d5024",
+    primary: "#91f575",
+    primaryHover: "#81d869",
   },
 };
