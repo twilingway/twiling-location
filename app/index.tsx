@@ -1,10 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, Text, View } from "react-native";
-import { Input } from "../shared/Input/Input";
-import { Button } from "../shared/Button/Button";
-import { Notification } from "../shared/Notification/Notification";
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { Button } from "../shared/Button/Button";
+import { CustomLink } from "../shared/CustomLink/CustomLink";
+import { Input } from "../shared/Input/Input";
+import { Notification } from "../shared/Notification/Notification";
 
 export default function Login() {
   const [error, setError] = useState<string | undefined>();
@@ -32,9 +31,7 @@ export default function Login() {
 
           <Button title="ВОЙТИ" onPress={alert} />
         </View>
-        <Link href={"/restore"}>
-          <Text>Восстановить пароль</Text>
-        </Link>
+        <CustomLink href={"/restores"} text="Восстановить пароль" />
       </View>
     </View>
   );
