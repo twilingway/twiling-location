@@ -1,15 +1,28 @@
 import { StatusBar } from "expo-status-bar";
 import { Image, StyleSheet, Text, View } from "react-native";
-import { Input } from "./shared/Input/Input";
-import { Button } from "./shared/Button/Button";
+import { Input } from "../shared/Input/Input";
+import { Button } from "../shared/Button/Button";
+import { Notification } from "../shared/Notification/Notification";
+import { useState } from "react";
+import { Link } from "expo-router";
 
-export default function App() {
+export default function Login() {
+  const [error, setError] = useState<string | undefined>();
+
+  const alert = () => {
+    setError("неверный логин или пароль");
+    setTimeout(() => {
+      setError(undefined);
+    }, 3500);
+  };
+
   return (
     <View style={styles.container}>
+      <Notification message={error} />
       <View style={styles.content}>
         <Text style={styles.logoTitle}>Twiling Location</Text>
         <Image
-          source={require("./assets/cargps.png")}
+          source={require("../assets/cargps.png")}
           style={styles.logo}
           resizeMode="cover"
         />
@@ -17,9 +30,11 @@ export default function App() {
           <Input placeholder="E-mail" />
           <Input placeholder="Пароль" isPassword />
 
-          <Button title="ВОЙТИ" />
+          <Button title="ВОЙТИ" onPress={alert} />
         </View>
-        <Text>Восстановить пароль</Text>
+        <Link href={"/restore"}>
+          <Text>Восстановить пароль</Text>
+        </Link>
       </View>
     </View>
   );

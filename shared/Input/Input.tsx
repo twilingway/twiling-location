@@ -31,9 +31,9 @@ export function Input({
           onPress={() => setIsPasswordVisible((prev) => !prev)}
         >
           {isPasswordVisible ? (
-            <EyeIcon color={Colors.light.text} />
+            <EyeIcon fill="red" />
           ) : (
-            <EyeClosedIcon color={Colors.light.text} />
+            <EyeClosedIcon fill="green" />
           )}
         </Pressable>
       )}

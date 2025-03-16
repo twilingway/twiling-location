@@ -4,31 +4,38 @@
     "slug": "twiling-location",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/cargps.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "backgroundColor": {
+      "light": "#d21616",
+      "dark": "#3f3c3c"
+    },
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/cargps.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": {
+        "light": "#d21616",
+        "dark": "#3f3c3c"
+      }
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/cargps.png"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
-
-    "plugins": ["expo-asset"],
+    "plugins": ["expo-asset", "expo-router"],
     "assetBundlePatterns": ["**/*"],
     "packagerOpts": {
       "config": "metro.config.js"
-    }
+    },
+    "scheme": "twiling-location-app-scheme"
   }
 }
