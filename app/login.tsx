@@ -73,8 +73,8 @@ export default function Login() {
           <Button title="ВОЙТИ" onPress={submit} isLoading={isLoading} />
         </View>
         <CustomLink href={"/restore"} text="Восстановить пароль" />
-        <CustomLink href={"/(home)/course/ts"} text="Course" />
-        <CustomLink href={"/(home)"} text="App" />
+        {/* <CustomLink href={"/(home)/course/ts"} text="Course" />
+        <CustomLink href={"/(home)"} text="App" /> */}
       </View>
     </View>
   );
@@ -88,11 +88,12 @@ const styles = StyleSheet.create({
     padding: 32,
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 300,
   },
   logoTitle: {
     fontSize: 24,
+    fontWeight: 500,
   },
   content: {
     alignItems: "center",

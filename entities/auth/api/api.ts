@@ -1,5 +1,5 @@
-export const PREFIX = "https://purpleschool.ru/api-v2";
+import { PREFIX } from "../../../shared/constants/api";
 
-export const API = {
+export const AUTH_API = {
   login: `${PREFIX}/auth/login`,
 };

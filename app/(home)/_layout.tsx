@@ -7,6 +7,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
 import { Colors } from "../../constants/Colors";
 import BurgerIcon from "../../assets/icons/burger.svg";
+import { CustomDrawer } from "../../entities/layout/ui/CustomDrawer/CustomDrawer";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -31,6 +32,7 @@ export default function AppLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
+        drawerContent={(props) => <CustomDrawer {...props} />}
         screenOptions={({ navigation }) => ({
           headerStyle: {
             backgroundColor: Colors.light.tint,
@@ -55,6 +57,7 @@ export default function AppLayout() {
                   justifyContent: "center",
                   alignItems: "center",
                   paddingHorizontal: 20,
+                  marginLeft: 16,
                   flex: 1,
                 }}
               />
@@ -69,6 +72,9 @@ export default function AppLayout() {
           sceneStyle: {
             backgroundColor: Colors.light.placeholderTextColor,
           },
+          // drawerContentStyle: {
+          //   backgroundColor: Colors.light.placeholderTextColor,
+          // },
         })}
       >
         <Drawer.Screen
