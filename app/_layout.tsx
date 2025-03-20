@@ -11,7 +11,7 @@ import { useEffect } from "react";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const insets = useSafeAreaInsets();
+  // const insets = useSafeAreaInsets();
 
   useEffect(() => {
     SplashScreen.preventAutoHideAsync();
@@ -34,7 +34,7 @@ export default function RootLayout() {
 
           contentStyle: {
             backgroundColor: Colors.light.background,
-            paddingTop: insets.top,
+            // paddingTop: insets.top,
           },
           headerShown: false,
         }}
@@ -46,6 +46,7 @@ export default function RootLayout() {
             presentation: "modal",
           }}
         />
+        <Stack.Screen name="(home)" />
       </Stack>
     </SafeAreaProvider>
   );

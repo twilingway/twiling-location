@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Animated,
   GestureResponderEvent,
   Pressable,
@@ -11,8 +12,9 @@ import { Colors } from "../../constants/Colors";
 
 export function Button({
   title,
+  isLoading,
   ...props
-}: PressableProps & { title: string }) {
+}: PressableProps & { title: string; isLoading?: boolean }) {
   const animatedValue = new Animated.Value(100);
   const color = animatedValue.interpolate({
     inputRange: [0, 100],
@@ -55,7 +57,10 @@ export function Button({
           backgroundColor: color,
         }}
       >
-        <Text style={styles.text}>{title}</Text>
+        {isLoading && (
+          <ActivityIndicator size="large" color={Colors.light.primary} />
+        )}
+        {!isLoading && <Text style={styles.text}>{title}</Text>}
       </Animated.View>
     </Pressable>
   );
