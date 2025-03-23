@@ -15,11 +15,26 @@ import { IUploadResponse } from "./ImageUploader.interface";
 
 interface ImageUploaderProps {
   onUpload: (url: string) => void;
+  onError?: (error: string) => void;
 }
 
-export function ImageUploader({ onUpload }: ImageUploaderProps) {
+export function ImageUploader({ onUpload, onError }: ImageUploaderProps) {
   const [libraryPermissions, requestLibraryPermissions] =
     useMediaLibraryPermissions();
+
+  const pickImage = async () => {
+    const result = await launchImageLibraryAsync({
+      mediaTypes: ["images", "livePhotos"],
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+    if (!result.assets) {
+      return null;
+    }
+
+    return result.assets[0];
+  };
 
   const verifyMediaPermissions = async () => {
     if (libraryPermissions?.status === PermissionStatus.UNDETERMINED) {
@@ -49,24 +64,6 @@ export function ImageUploader({ onUpload }: ImageUploaderProps) {
     return true;
   };
 
-  const pickImage = async () => {
-    const isPermissionGranted = await verifyMediaPermissions();
-    if (!isPermissionGranted) {
-      return;
-    }
-    const result = await launchImageLibraryAsync({
-      mediaTypes: ["images", "livePhotos"],
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-    });
-    console.log("result :>> ", result);
-    if (result?.assets && result?.assets.length > 0) {
-      //   setImage(result.assets[0].uri);
-      uploadToServer(result.assets[0].uri, result.assets[0].fileName ?? "");
-    }
-  };
-
   const uploadToServer = async (uri: string, name: string) => {
     const formData = new FormData();
     formData.append("files", {
@@ -84,8 +81,7 @@ export function ImageUploader({ onUpload }: ImageUploaderProps) {
           },
         }
       );
-      console.log("data :>> ", data);
-      onUpload(data.urls.original);
+      return data.urls.original;
     } catch (error) {
       if (error instanceof AxiosError) {
         console.error("upload error :>> ", error);
@@ -94,8 +90,27 @@ export function ImageUploader({ onUpload }: ImageUploaderProps) {
     }
   };
 
+  const upload = async () => {
+    const isPermissionGranted = await verifyMediaPermissions();
+    if (!isPermissionGranted) {
+      onError?.("недостаточно прав");
+      return;
+    }
+    const asset = await pickImage();
+    if (!asset) {
+      onError?.("Не удалось выбрать изображение");
+      return;
+    }
+    const uploadedUrl = await uploadToServer(asset.uri, asset.fileName ?? "");
+    if (!uploadedUrl) {
+      onError?.("Не удалось загрузить изображение");
+      return;
+    }
+    onUpload(uploadedUrl);
+  };
+
   return (
-    <Pressable onPress={pickImage}>
+    <Pressable onPress={upload}>
       <View style={styles.container}>
         <SimpleLineIcons name="cloud-upload" size={24} color="black" />
         <Text style={styles.text}>Загрузить изображение</Text>

@@ -17,7 +17,9 @@
       "backgroundColor": {
         "light": "#d21616",
         "dark": "#3f3c3c"
-      }
+      },
+      "width": 200,
+      "height": 200
     },
     "ios": {
       "supportsTablet": true
