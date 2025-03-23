@@ -1,6 +1,7 @@
+/* eslint-disable react-native/no-unused-styles */
 import { useEffect, useState } from "react";
+import { Animated, Dimensions, StyleSheet, Text } from "react-native";
 import { INotificationProps } from "./Notification.props";
-import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
 
 export function Notification({ message, type = "error" }: INotificationProps) {
   const [isShown, setIsShown] = useState<boolean>(false);

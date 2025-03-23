@@ -1,16 +1,13 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { CustomLink } from "../shared/CustomLink/CustomLink";
+import cargps from "../assets/cargps.png";
 
 export default function UnmatchedCustom() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.context}>
-        <Image
-          source={require("../assets/cargps.png")}
-          style={styles.image}
-          resizeMode="cover"
-        />
+        <Image source={cargps} style={styles.image} resizeMode="cover" />
         <Text style={styles.text}>
           Ооо... что то пошло не так. Попробуйте вернуться на главный экран.
         </Text>

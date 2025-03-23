@@ -57,7 +57,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     paddingVertical: 18,
   },
-  eyeIcon: {
-    // color: "red",
-  },
 });

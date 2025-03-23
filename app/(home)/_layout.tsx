@@ -1,12 +1,11 @@
-import { Redirect, SplashScreen, Stack } from "expo-router";
-import { useAtomValue } from "jotai";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { authAtom } from "../../entities/auth/model/auth.state";
-import { DrawerLayoutAndroid, StyleSheet, View } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Redirect, SplashScreen } from "expo-router";
 import { Drawer } from "expo-router/drawer";
-import { Colors } from "../../constants/Colors";
+import { useAtomValue } from "jotai";
+import { StyleSheet, View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BurgerIcon from "../../assets/icons/burger.svg";
+import { Colors } from "../../constants/Colors";
+import { authAtom } from "../../entities/auth/model/auth.state";
 import { CustomDrawer } from "../../widget/layout/ui/CustomDrawer/CustomDrawer";
 
 SplashScreen.preventAutoHideAsync();
@@ -53,13 +52,7 @@ export default function AppLayout() {
             >
               <BurgerIcon
                 onPress={() => navigation.toggleDrawer()}
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  paddingHorizontal: 20,
-                  marginLeft: 16,
-                  flex: 1,
-                }}
+                style={styles.burger}
               />
             </View>
           ),
@@ -103,6 +96,13 @@ export default function AppLayout() {
 
 const styles = StyleSheet.create({
   wrapper: {
+    flex: 1,
+  },
+  burger: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    marginLeft: 16,
     flex: 1,
   },
 });

@@ -2,10 +2,6 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { Image, StyleSheet } from "react-native";
 
 export function Avatar({ image }: { image: string | null }) {
-  if (!image) {
-    return null;
-  }
-
   return (
     <>
       {image ? (

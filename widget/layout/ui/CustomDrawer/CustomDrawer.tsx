@@ -2,17 +2,18 @@ import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
 } from "@react-navigation/drawer";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
-import { Colors } from "../../../../constants/Colors";
-import { CustomLink } from "../../../../shared/CustomLink/CustomLink";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useAtom, useSetAtom } from "jotai";
-import { logoutAtom } from "../../../../entities/auth/model/auth.state";
-import { loadUserProfileAtom } from "../../../../entities/user/model/user.state";
 import { useEffect } from "react";
-import { UserMenu } from "../../../user/ui/UserMenu/UserMenu";
+import { Colors } from "../../../../constants/Colors";
+import { logoutAtom } from "../../../../entities/auth/model/auth.state";
 import { MenuItem } from "../../../../entities/layout/ui/MenuItem/MenuItem";
+import { loadUserProfileAtom } from "../../../../entities/user/model/user.state";
+import { CustomLink } from "../../../../shared/CustomLink/CustomLink";
+import { UserMenu } from "../../../user/ui/UserMenu/UserMenu";
+import cargps from "../../../../assets/cargps.png";
 
 const MENU = [
   {
@@ -64,11 +65,7 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
       <View style={styles.footer}>
         <CustomLink text="Выход" href={"/login"} onPress={() => logout()} />
         <View style={styles.footerLogo}>
-          <Image
-            source={require("../../../../assets/cargps.png")}
-            style={styles.logo}
-            resizeMode="cover"
-          />
+          <Image source={cargps} style={styles.logo} resizeMode="cover" />
         </View>
       </View>
     </DrawerContentScrollView>
@@ -108,8 +105,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-  },
-  text: {
-    color: Colors.light.placeholderTextColor,
   },
 });

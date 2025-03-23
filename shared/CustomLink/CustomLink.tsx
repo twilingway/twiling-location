@@ -1,16 +1,6 @@
-import {
-  Pressable,
-  StyleSheet,
-  TextInput,
-  TextInputProps,
-  View,
-  Text,
-} from "react-native";
-import { Colors } from "../../constants/Colors";
-import { useState } from "react";
-import EyeIcon from "../../assets/icons/eye.svg";
-import EyeClosedIcon from "../../assets/icons/eye_closed.svg";
 import { Link, LinkProps } from "expo-router";
+import { StyleSheet, Text } from "react-native";
+import { Colors } from "../../constants/Colors";
 
 export function CustomLink({ text, ...props }: LinkProps & { text: string }) {
   return (

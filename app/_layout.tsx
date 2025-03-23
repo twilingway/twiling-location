@@ -1,12 +1,8 @@
-import { Slot, SplashScreen, Stack } from "expo-router";
-import { Text } from "react-native";
-import { Colors } from "../constants/Colors";
+import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
 import { useEffect } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Colors } from "../constants/Colors";
 
 SplashScreen.preventAutoHideAsync();
 

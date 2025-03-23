@@ -1,16 +1,15 @@
+import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
+import axios, { AxiosError } from "axios";
 import {
   launchImageLibraryAsync,
   PermissionStatus,
   useMediaLibraryPermissions,
 } from "expo-image-picker";
 import { openSettings } from "expo-linking";
-import { useState } from "react";
-import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
-import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
-import { Colors } from "../../constants/Colors";
 import FormData from "form-data";
+import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
+import { Colors } from "../../constants/Colors";
 import { FILE_API } from "../constants/api";
-import axios, { AxiosError } from "axios";
 import { IUploadResponse } from "./ImageUploader.interface";
 
 interface ImageUploaderProps {

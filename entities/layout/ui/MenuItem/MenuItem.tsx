@@ -1,7 +1,4 @@
-import {
-  DrawerContentComponentProps,
-  DrawerNavigationHelpers,
-} from "@react-navigation/drawer/lib/typescript/commonjs/src/types";
+import { DrawerContentComponentProps } from "@react-navigation/drawer/lib/typescript/commonjs/src/types";
 import { ReactNode, useState } from "react";
 import {
   Pressable,

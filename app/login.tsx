@@ -1,19 +1,13 @@
+import { router } from "expo-router";
+import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
-import {
-  Image,
-  NativeSyntheticEvent,
-  StyleSheet,
-  Text,
-  TextInputChangeEventData,
-  View,
-} from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { loginAtom } from "../entities/auth/model/auth.state";
 import { Button } from "../shared/Button/Button";
 import { CustomLink } from "../shared/CustomLink/CustomLink";
 import { Input } from "../shared/Input/Input";
 import { Notification } from "../shared/Notification/Notification";
-import { useAtom } from "jotai";
-import { loginAtom } from "../entities/auth/model/auth.state";
-import { router } from "expo-router";
+import cargps from "../assets/cargps.png";
 
 export default function Login() {
   const [localError, setLocalError] = useState<string | undefined>();
@@ -56,11 +50,7 @@ export default function Login() {
       <Notification message={localError} />
       <View style={styles.content}>
         <Text style={styles.logoTitle}>Twiling Location</Text>
-        <Image
-          source={require("../assets/cargps.png")}
-          style={styles.logo}
-          resizeMode="cover"
-        />
+        <Image source={cargps} style={styles.logo} resizeMode="cover" />
         <View style={styles.form}>
           <Input placeholder="E-mail" onChangeText={setEmail} value={email} />
           <Input

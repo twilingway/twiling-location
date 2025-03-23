@@ -18,8 +18,8 @@
         "light": "#d21616",
         "dark": "#3f3c3c"
       },
-      "width": 200,
-      "height": 200
+      "width": 300,
+      "height": 300
     },
     "ios": {
       "supportsTablet": true

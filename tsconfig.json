@@ -2,5 +2,20 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true
+    // "target": "ESNext",
+    // "allowUmdGlobalAccess": true,
+    // "module": "commonjs",
+    // "lib": ["dom", "esnext"],
+    // "jsx": "react-jsx",
+    // "types": ["react", "react-native"],
+    // "esModuleInterop": true,
+    // "skipLibCheck": true,
+
+    // "moduleResolution": "node",
+    // "resolveJsonModule": true,
+    // "allowSyntheticDefaultImports": true,
+    // "forceConsistentCasingInFileNames": true
   }
+  // "include": ["src/**/*", "global.d.ts"]
+  // "exclude": ["node_modules", "metro.config.js"]
 }
