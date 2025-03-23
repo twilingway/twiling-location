@@ -24,7 +24,7 @@ export function UserMenu({ profile }: { profile: IProfileUser | undefined }) {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     alignItems: "center",
     gap: 8,
     marginTop: 32,

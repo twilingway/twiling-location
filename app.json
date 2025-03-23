@@ -31,7 +31,7 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": ["expo-asset", "expo-router"],
+    "plugins": ["expo-asset", "expo-router", "expo-image-picker"],
     "assetBundlePatterns": ["**/*"],
     "packagerOpts": {
       "config": "metro.config.js"

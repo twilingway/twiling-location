@@ -8,10 +8,24 @@ import { Colors } from "../../../../constants/Colors";
 import { CustomLink } from "../../../../shared/CustomLink/CustomLink";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useAtom, useSetAtom } from "jotai";
-import { logoutAtom } from "../../../auth/model/auth.state";
-import { loadUserProfileAtom } from "../../../user/model/user.state";
+import { logoutAtom } from "../../../../entities/auth/model/auth.state";
+import { loadUserProfileAtom } from "../../../../entities/user/model/user.state";
 import { useEffect } from "react";
-import { UserMenu } from "../../../user/ui/UserMenu/UserMenu";
+import { UserMenu } from "../../../../entities/user/ui/UserMenu/UserMenu";
+import { MenuItem } from "../../../../entities/layout/ui/MenuItem/MenuItem";
+
+const MENU = [
+  {
+    text: "Курсы",
+    icon: <Ionicons name="close-circle-outline" size={50} color="" />,
+    path: "index",
+  },
+  {
+    text: "Профиль",
+    icon: <Ionicons name="close-circle-outline" size={50} color="" />,
+    path: "profile",
+  },
+];
 
 export function CustomDrawer(props: DrawerContentComponentProps) {
   const logout = useSetAtom(logoutAtom);
@@ -25,7 +39,15 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
     <DrawerContentScrollView
       {...props}
       contentContainerStyle={styles.scrollView}
+      // style={{ paddingStart: 0, paddingEnd: 0, padding: 0 }}
     >
+      {/* <Ionicons
+        name="close-circle-outline"
+        size={50}
+        color=""
+        onPress={() => props.navigation.closeDrawer()}
+        style={styles.iconClose}
+      /> */}
       <View style={styles.content}>
         <Ionicons
           name="close-circle-outline"
@@ -35,6 +57,9 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
           style={styles.iconClose}
         />
         <UserMenu profile={user.user?.profile} />
+        {MENU.map((menu) => (
+          <MenuItem key={menu.path} {...menu} drawer={props} />
+        ))}
       </View>
       <View style={styles.footer}>
         <CustomLink text="Выход" href={"/login"} onPress={() => logout()} />
@@ -44,7 +69,6 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
             style={styles.logo}
             resizeMode="cover"
           />
-          {/* <Text style={styles.text}>Twiling Location</Text> */}
         </View>
       </View>
     </DrawerContentScrollView>
@@ -56,6 +80,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.light.background,
     color: Colors.light.text,
+    paddingStart: 0,
+    paddingEnd: 0,
   },
   logo: {
     width: 100,
@@ -70,6 +96,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    padding: 0,
+    paddingStart: 0,
   },
   footer: {
     justifyContent: "center",

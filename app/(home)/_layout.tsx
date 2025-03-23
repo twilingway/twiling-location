@@ -2,12 +2,12 @@ import { Redirect, SplashScreen, Stack } from "expo-router";
 import { useAtomValue } from "jotai";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { authAtom } from "../../entities/auth/model/auth.state";
-import { DrawerLayoutAndroid, View } from "react-native";
+import { DrawerLayoutAndroid, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
 import { Colors } from "../../constants/Colors";
 import BurgerIcon from "../../assets/icons/burger.svg";
-import { CustomDrawer } from "../../entities/layout/ui/CustomDrawer/CustomDrawer";
+import { CustomDrawer } from "../../widget/layout/ui/CustomDrawer/CustomDrawer";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,7 +30,7 @@ export default function AppLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={styles.wrapper}>
       <Drawer
         drawerContent={(props) => <CustomDrawer {...props} />}
         screenOptions={({ navigation }) => ({
@@ -70,7 +70,7 @@ export default function AppLayout() {
           },
           headerTitleAlign: "center",
           sceneStyle: {
-            backgroundColor: Colors.light.placeholderTextColor,
+            // backgroundColor: Colors.light.placeholderTextColor,
           },
           // drawerContentStyle: {
           //   backgroundColor: Colors.light.placeholderTextColor,
@@ -84,6 +84,13 @@ export default function AppLayout() {
             title: "Мои курсы",
           }}
         />
+        <Drawer.Screen
+          name="profile" // This is the name of the page and must match the url from root
+          options={{
+            // drawerLabel: "Home",
+            title: "Профиль",
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
     // <SafeAreaProvider>
@@ -93,3 +100,9 @@ export default function AppLayout() {
     // </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+});
